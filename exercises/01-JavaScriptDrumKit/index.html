@@ -9,7 +9,7 @@
   
   <div class="buttons">
     <button data-btnOn>Power On</button>
-    <button data-btnOn>OFF</button>
+    <button class="pressed" data-btnOff>OFF</button>
   </div>
   <div class="keys">
     <div data-key="65" class="key"><kbd>A</kbd><span class="sound">clap</span></div>
@@ -64,10 +64,41 @@
     if (transitionEvent.propertyName !== 'transform') return;
     this.classList.remove('playing');
   }
+
+  function pressOn () {
+    if (btnOn.classList === "pressed sound") {
+      return
+    } else {
+      btnOn.classList.add("pressed");
+      btnOn.classList.add("sound");
+      btnOn.textContent = "ON"
+      btnOff.classList.remove("pressed");
+      btnOff.textContent = "Power Off"
+      window.addEventListener('keydown', playSound);
+      document.querySelectorAll('.key>span').forEach(spn => spn.classList.add('sound'));
+    }
+  }
+  function pressOff () {
+    if (btnOff.classList === "pressed") {
+      return
+    } else {
+      btnOff.classList.add("pressed");
+      btnOff.textContent = "OFF"
+      btnOn.classList.remove("pressed");
+      btnOn.classList.remove("sound");
+      btnOn.textContent = "Power On"
+      window.removeEventListener('keydown', playSound);
+      document.querySelectorAll('.key>span').forEach(spn => spn.classList.remove('sound'));
+    }
+  }
   
   const keys = document.querySelectorAll('.key');
   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-  window.addEventListener('keydown', playSound);
+
+  const btnOn = document.querySelector('[data-btnOn]');
+  const btnOff = document.querySelector('[data-btnOff]');
+  btnOn.addEventListener('click', pressOn)
+  btnOff.addEventListener('click', pressOff)
 
 </script>
 

@@ -18,6 +18,21 @@ body,html {
   /* outline: red 1px solid; */
 }
 
+button {
+  width: 65px;
+  padding: 5px;
+  background-color: dodgerblue;
+  color: white;
+}
+
+.pressed {
+  color: gray;
+  background-color: lightgray;
+  background: #e5e5e5;
+  box-shadow: inset 0px 0px 5px #c1c1c1;
+  text-shadow: none;
+}
+
 .keys {
   display: flex;
   justify-content: center;
@@ -33,9 +48,8 @@ body,html {
   transition: all .07s ease;
   width: 10rem;
   text-align: center;
-  color: white;
+  color: rgba(0,0,0,0.4);
   background: rgba(0,0,0,0.4);
-  text-shadow: 0 0 .5rem black;
 }
 
 .playing {
@@ -45,8 +59,10 @@ body,html {
 }
 
 kbd {
+  color: white;
   display: block;
   font-size: 4rem;
+  text-shadow: 0 0 .5rem black;
 }
 
 .sound {
@@ -54,4 +70,5 @@ kbd {
   text-transform: uppercase;
   letter-spacing: .1rem;
   color: #ffc600;
+  text-shadow: 0 0 .5rem black;
 }
