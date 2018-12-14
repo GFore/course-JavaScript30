@@ -1,6 +1,6 @@
 html {
   font-size: 10px;
-  /* background: url(http://i.imgur.com/b9r5sEL.jpg) bottom center; */
+  background: url(http://i.imgur.com/5Cd36I1.png)  bottom center;
   background-size: cover;
 }
 
@@ -16,27 +16,17 @@ body,html {
   align-items: center;
   justify-content: center;
   /* outline: red 1px solid; */
-}
-
-button {
-  width: 65px;
-  padding: 5px;
-  background-color: dodgerblue;
   color: white;
-}
-
-.pressed {
-  color: gray;
-  background-color: lightgray;
-  background: #e5e5e5;
-  box-shadow: inset 0px 0px 5px #c1c1c1;
-  text-shadow: none;
 }
 
 .keys {
   display: flex;
+  /* flex: 1; */
+  min-height: 100vh;
+  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  align-content: center
 }
 
 .key {
@@ -47,6 +37,7 @@ button {
   padding: 1rem .5rem;
   transition: all .07s ease;
   width: 10rem;
+  min-width: 60px;
   text-align: center;
   color: rgba(0,0,0,0.4);
   background: rgba(0,0,0,0.4);
@@ -54,8 +45,8 @@ button {
 
 .playing {
   transform: scale(1.1);
-  border-color: #ffc600;
-  box-shadow: 0 0 1rem #ffc600;
+  border-color: red;
+  box-shadow: 0 0 1rem red;
 }
 
 kbd {
@@ -69,6 +60,57 @@ kbd {
   font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: .1rem;
-  color: #ffc600;
+  color: red;
   text-shadow: 0 0 .5rem black;
+}
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin: 5px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  /* background-color: #2196F3; */
+  background-color: red;
+}
+
+input:focus + .slider {
+  /* box-shadow: 0 0 1px #2196F3; */
+  box-shadow: 0 0 1px red;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
 }
