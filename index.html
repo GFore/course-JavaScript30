@@ -13,6 +13,18 @@
             <p>Assign a sound to each of a group of keys on the keyboard and play the sound when the key is pressed</p>
             <a href="./exercises/01-JavaScriptDrumKit/index.html">See Results</a>
             <p>Things I learned/practiced:</p>
+            <ul>
+                <li>The same custom data attribute can be assigned to multiple elements and then used to assign event listeners. This is preferred over using classes (which should be used for styles), id's (which should be used for reference), or elements (used for semantics). In this challenge, a custom data attribute matching a key number was assigned both to the key and to the audio tag that plays when the key is pressed.</li>
+                <li><a href="http://keycode.info/" target="_blank">Keycode.info</a> is a simple tool that shows the corresponding key codes and other values for eack key you press</li>
+                <li>rewind audio element to 0 before play to deal with repeated key presses. Once an audio starts playing, it will go until it ends. So, manually rewinding to the start of the audio clip allows to start playing from the beginning with each key press</li>
+                <li>Can assign an event listener to the <b>transitionend</b> event to monitor css style changes that are animated and then act when the animation ends.</li>
+                <li>Learned how to add a toggle switch (<a href="https://www.w3schools.com/howto/howto_css_switch.asp" target="_blank">W3 Schools Tutorial</a>) using a checkbox input with a span spruced up with lots of styling. Assigned a click event handler to it to provide an on/off switch for the drum kit. (Need to better understand the use of :before and :after psuedo-codes in CSS styling)</li>
+                <li>Used querySelector and querySelectAll to get one or an array of page elements. With the array, can then use map or forEach to assign classes or eventhandlers to each element</li>
+                <li>Used classList add(), remove(), and value to alter the class assignments of element.</li>
+                <li>Event Listeners - used addEventListener() and removeEventListener() to simulate turning the app on and off</li>
+                <li>CSS styling is complex - need to better understand why the flexbox styles of the internal divs affect the display of the background image that is applied to the HTML tag and also work on the responsiveness (understand rems vs ems and the effect on using them for font sizes, margins, padding, border-radius, etc) </li>
+
+            </ul>
         </div>
     </div>
     
