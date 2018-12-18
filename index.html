@@ -31,10 +31,18 @@
     <div class="day">
         <div class="dayHeader">
             <h2>Day 2 - JS and CSS Clock</h2>
-            <p>Assign a sound to each of a group of keys on the keyboard and play the sound when the key is pressed</p>
+            <p>Build an analog clock display with second, minute, and hour hand using CSS and JavaScript</p>
             <a href="./exercises/02-JS-CSSClock/index.html">See Results</a>
             <p>Things I learned/practiced:</p>
             <ul>
+                <li>Moved the CSS and JS to external files and added the display of the date and time to go along with the analog clock display</li>
+                <li>Each clock hand is a separate narrow div and the color is provided via background-color (not border). CSS positioning is used (relative on the parent clock-face div and absolute on the hand divs) to place each hand in the same starting position (12:00:00).</li>
+                <li>Use the CSS transform:rotate(Xdeg) property to rotate the hands, with JS updating X each second.</li>
+                <li>Initially, the transform:rotate() is done with the center of the div as the rotation point. Use the CSS transform-origin property to move the point of rotation to the end of the div, which is placed at the center of the clock.</li>
+                <li>A CSS Bezier transition-timing-function is used to give the hands a realistic ticking motion. Chrome DevTools has a neat Bezier editor that can be used to adjust the 4 values of the time curve.</li>
+                <li>One buggy thing is the transition from the 59 sec position to the 0 sec position for the hands since the transform quickly swings the hand counter-clockwise as it transforms the angle from 354deg to 0deg. Could fix this using JS to temporarily turn of the transition or could just keep a running total of the seconds rather than resetting to 0.</li>
+                <li>This is mostly a CSS project. The JS is simple and just consists of using a setInterval timer that runs a function every second. The function grabs the current time and positions the hands based on the seconds, minutes, and hours.</li>
+                <li>One other bug is that the hour hand stays at the exact hour position rather than slowly moving each minute. So, when the minute hand jumps from 59 to 0, the hour hand jumps to the next hour. Could make the hour hand move as expected by doing more math in the calculation of its position - e.g., move it 6 deg every 12 minutes.</li>
             </ul>
         </div>
     </div>

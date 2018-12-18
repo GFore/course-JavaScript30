@@ -1,6 +1,8 @@
 const secondHand = document.querySelector('[data-second]');
 const minuteHand = document.querySelector('[data-minute]');
 const hourHand = document.querySelector('[data-hour]');
+const digitalTime = document.querySelector('[data-digTime]');
+const digitalDate = document.querySelector('[data-date]');
 
 function setDate() {
     const now = new Date();
@@ -11,7 +13,8 @@ function setDate() {
     secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
     minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
     hourHand.style.transform = `rotate(${hourDegrees}deg)`;
-    //console.log(secondsDegrees)
+    digitalTime.innerHTML = now.toLocaleTimeString();
+    digitalDate.innerHTML = now.toLocaleDateString();
 }
 
 setInterval(setDate, 1000)
