@@ -58,16 +58,19 @@
                 <li>The <a href="https://css-tricks.com/almanac/selectors/r/root/" target="_blank">:root selector</a> is used to refer to the highest element in the DOM, which is the same as the <code>&lt;html&gt;</code> element in a webpage. It is a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes" target="_blank">psuedo-class selector</a> so it has specificity higher than an element selector. It is useful for declaring CSS variables.</li>
                 <li>Declare CSS variables by preceding the variable name with "--" and then giving it a value in a style rule.</li>
                 <li>Use variable by using it as the value inside of <code>var()</code> in a style rule.</li>
-
-
                 <li>Calling <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll" target="_blank"><code>document.querySelectorAll('.controls input')</code></a> returns a NodeList (which is similar to an array) of input elements within the div that has the "controls" class. The argument in a querySelectorAll call must be a valid <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" target="_blank">CSS Selector</a>.</li>
                 <li>You can <a href="https://medium.com/@jsdevray/5-ways-to-loop-over-dom-elements-from-queryselectorall-in-javascript-55bd66ca4128" target="_blank">loop</a> over the elements of a NodeList just like you would an array.</li>
-
-
                 <li>Console log a NodeList and then open it's <code>__proto__</code> property to see which methods are available on it.</li>
 
-                <li></li>
-                <li></li>
+                <li>It is preferable to <a href="https://javascript.info/introduction-browser-events">handle element events</a> using <code>addEventListener()</code> rather than on&lt;event&gt; attributes since:
+                    <ul>
+                        <li>There can only be one on&lt;event&gt; per element since an element cannot have more than one property with the same name. The last one that is defined is the one that is used. However, an element can have multiple handlers assigned to an event by making multiple <code>addEventListener()</code> assignments, one for each of the handler functions.</li>
+                        <li>It is more complicated to remove on&lt;event&gt; event listeners (assign its value to <code>null</code>). Listeners added via <code>addEventListener()</code> where the handler function is shown as a reference to the function's name (rather than being included as an anonymous function argument) can be removed with <code>removeEventListener()</code>, provided the exact same argument list is used.</li>
+                    </ul>
+                </li>
+                <li>Inside of an event handler function, <code>this</code> refers to the element the event listener is attached to.</li>
+                <li>The 3rd argument in <code>addEventListener()</code> is a boolean that determines the phase, which means the order the handler functions will be run when there is conflict with a different event listener on a containing element (i.e. when you click a paragraph element you are also clicking the div element that contains it - this is event bubbling)</li>
+                <li>When an event happens, the browser creates an <a href="https://javascript.info/introduction-browser-events#event-object">event object</a>, puts details into it and passes it as an argument to the handler.</li>
             </ul>
             <br>
         </div>
