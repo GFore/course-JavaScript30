@@ -18,9 +18,6 @@ const inventors = [
     { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
 ];
 
-const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
-
-
 function createHTMLTableFromArrayOfObjects(myArray, myContainer) {
     // myArray is an array of objects that is to be displayed as an HTML table inside parent
     // element myContainer. Each object in myArray will be a single row in the table, with the
@@ -52,6 +49,25 @@ function createHTMLTableFromArrayOfObjects(myArray, myContainer) {
 
     // Now combine the header and rows to build the table display in myContainer
     myContainer.innerHTML += headerRow + bodyRows;
+    return;
+}
+
+function createHTMLListFromArray(myArray, myContainer) {
+    // myArray is an array of items that is to be displayed as an HTML list inside parent
+    // element myContainer, which is either an <ol> or an <ul> element
+
+    if (myArray.length < 1) {
+        myContainer.textContent = "No data provided"
+        return;
+    }
+
+    // Create the body rows
+    let listItems = '';
+    myArray.forEach(item => {
+        listItems += `<li>${item}</li>`;
+    });
+
+    myContainer.innerHTML = listItems;
     return;
 }
 
@@ -117,6 +133,27 @@ createHTMLTableFromArrayOfObjects(blvds, container06);
 
 // 7. sort Exercise
 // Sort the people alphabetically by last name
+let people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'].sort((a,b) => {return a[3] < b[4] ? -1 : 1});
+
+const nameList = document.querySelector('[data-names]');
+createHTMLListFromArray(people, nameList);
+
+let peopleSorted = [...people];
+peopleSorted
+    .sort((a, b) => {
+        const [aLast, aFirst] = a.split(', ');
+        const [bLast, bFirst] = b.split(', ');
+        return (aFirst < bFirst) ? -1 : 1;
+    })
+    .sort((a, b) => {
+        const [aLast, aFirst] = a.split(', ');
+        const [bLast, bFirst] = b.split(', ');
+        return (aLast < bLast) ? -1 : 1;
+    })
+    
+const nameListSorted = document.querySelector('[data-container07]');
+createHTMLListFromArray(peopleSorted, nameListSorted);
+
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
