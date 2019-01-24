@@ -112,7 +112,7 @@ inventors.forEach(x => {
     x.age = x.passed - x.year;
     sortedByAge.push(x);
 })
-console.log(sortedByAge);
+
 sortedByAge.sort((a, b) => {
     return (a.age < b.age) ? -1 : 1; 
 })
@@ -127,7 +127,6 @@ let blvds = Array.from(uls.querySelectorAll('li'));
 blvds = blvds.map(x => {return {'Boulevard' : x.textContent}})
              .filter(x => x.Boulevard.includes('de'));
 
-console.log(blvds);
 const container06 = document.querySelector('[data-ans06]');
 createHTMLTableFromArrayOfObjects(blvds, container06);
 
@@ -150,7 +149,7 @@ peopleSorted
         const [bLast, bFirst] = b.split(', ');
         return (aLast < bLast) ? -1 : 1;
     })
-    
+
 const nameListSorted = document.querySelector('[data-container07]');
 createHTMLListFromArray(peopleSorted, nameListSorted);
 
@@ -158,3 +157,23 @@ createHTMLListFromArray(peopleSorted, nameListSorted);
 // 8. Reduce Exercise
 // Sum up the instances of each of these
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+const wordList = document.querySelector('[data-words]');
+createHTMLListFromArray(data, wordList);
+
+let countedWords = Object.entries(data.reduce((allWords, word) => { 
+    // if (word in allWords) {
+    //   allWords[word]++;
+    // } else {
+    //   allWords[word] = 1;
+    // }
+
+    // alternate method:
+    if (!allWords[word]) {allWords[word] = 0};
+    allWords[word]++;
+
+    return allWords;
+  }, {})).map(x => `${x[0]} (${x[1]})`);
+
+  const wordCount = document.querySelector('[data-container08]');
+  createHTMLListFromArray(countedWords, wordCount);
