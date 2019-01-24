@@ -84,10 +84,28 @@
                 <a href="./exercises/04-ArrayCardioDay1/index.html">See Results</a>
                 <p>Things I learned/practiced:</p>
                 <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    <li>Instead of showing the results in the console, I added HTML content so that I could get more practice using <code>querySelector()</code> and JS to add content to the page</li>
+                    <li>Use <code>console.table()</code> to display an array as a table in the console.</li>
+                    <li>The argument for filter, map, etc can be an arrow function to simplify things.</li>
+                    <li>Use the filter() method to create a new array containing only the items from the original array that return true when matched against some boolean expression, leaving the original array intact</li>
+                    <li>Use map() to return a new array that is the same length as the original array but where each item in the original array has been modified, leaving the original array intact</li>
+                    <li>Use sort() to change the order of items in an array (the original array is modified). If no argument is provided, sort() attempts to sort the items in alpanumeric order when possible, or does nothing if the items cannot be sorted directly. If including a function, it takes two arguments at a time, compares them and swaps them if the comparison returns a value other than -1. It is common to use a ternary to return -1 if the values should be swapped or 1 if they should not be swapped.</li>
+                    <li>The reduce() array method is a powerful tool for tracking an accumulated value while iterating over the elements of an array, such as a sum total of an integer field. The first argument is the reducer function which processes each item and adjusts the accumlator to reflect the item. The second argument provides an initial value for the accumlator, typically 0 for numeric accumlators. But, the reduce method can do many other things, such as:
+                        <ul>
+                            <li>Find the max or min value in a specific key/value pair in an array of objects</li>
+                            <li>Sum values in an object array</li>
+                            <li>Flatten an array of arrays</li>
+                            <li>Counting the number of occurrences of each value in an array </li>
+                            <li>Grouping objects by a property</li>
+                            <li>Bonding arrays contained in an array of objects using the spread operator and initialValue</li>
+                            <li>Remove duplicate items in array (this can also be done with Set and Array.from()</li>
+                            <li>Running Promises in Sequence</li>
+                            <li>Function composition enabling piping</li>
+                        </ul>
+                    See the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce">MDN article on reduce</a> for more info.
+                    </li>
+                    <li>Use the column-width CSS property to make an HTML list display in multiple, responsive columns</li>
+                    
                 </ul>
                 <br>
             </div>

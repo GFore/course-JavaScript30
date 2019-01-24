@@ -64,6 +64,7 @@ const bornIn1500s = inventors.filter(inventor => inventor.year > 1499 && invento
 const container01 = document.querySelector('[data-ans01]');
 createHTMLTableFromArrayOfObjects(bornIn1500s, container01);
 
+
 // Array.prototype.map()
 // 2. Give us an array of the inventors' first and last names
 const names = inventors.map(inventor => { 
@@ -72,23 +73,47 @@ const names = inventors.map(inventor => {
 const container02 = document.querySelector('[data-ans02]');
 createHTMLTableFromArrayOfObjects(names, container02);
 
+
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
 const sortedByBirth = inventors.sort((a, b) => {
     return (a.year < b.year) ? -1 : 1; 
 });
-console.log(sortedByBirth);
 const container03 = document.querySelector('[data-ans03]');
 createHTMLTableFromArrayOfObjects(sortedByBirth, container03);
 
+
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live?
+const reducer = (years, inventor) => years + (inventor.passed - inventor.year);
+const totalYears = inventors.reduce(reducer, 0);
+document.querySelector('[data-ans04]').textContent = totalYears + " years";
+
 
 // 5. Sort the inventors by years lived
+const sortedByAge = [];
+inventors.forEach(x => {
+    x.age = x.passed - x.year;
+    sortedByAge.push(x);
+})
+console.log(sortedByAge);
+sortedByAge.sort((a, b) => {
+    return (a.age < b.age) ? -1 : 1; 
+})
+
+const container05 = document.querySelector('[data-ans05]');
+createHTMLTableFromArrayOfObjects(sortedByAge, container05);
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+const uls = document.querySelector('[data-blvd]');
+let blvds = Array.from(uls.querySelectorAll('li'));
+blvds = blvds.map(x => {return {'Boulevard' : x.textContent}})
+             .filter(x => x.Boulevard.includes('de'));
 
+console.log(blvds);
+const container06 = document.querySelector('[data-ans06]');
+createHTMLTableFromArrayOfObjects(blvds, container06);
 
 // 7. sort Exercise
 // Sort the people alphabetically by last name
